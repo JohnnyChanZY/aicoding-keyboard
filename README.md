@@ -1,5 +1,5 @@
-# ESP32-Keyboard-Customized
-A multi-functional ESP32-C3 keyboard with 5 customizable keys, with alias called "ESP32 Keybrick". Uses "Hid2Ble" library (This helps a lot it saved my time developing BLE funcs), [See here](https://github.com/BearLaboratory/Hid2Ble).
+# AI Coding Keyboard
+A multi-functional ESP32-C3 keyboard with 5 customizable keys and voice input capability, with alias called "ESP32 Keybrick". Uses "Hid2Ble" library (This helps a lot it saved my time developing BLE funcs), [See here](https://github.com/BearLaboratory/Hid2Ble).
 
 ---
 
@@ -19,6 +19,7 @@ A multi-functional ESP32-C3 keyboard with 5 customizable keys, with alias called
  - [-] Create new presets without modifying code
  - [√] Battery monitoring and managing
  - [-] Reconnect automatically
+ - [√] Voice input via I2S microphone (INMP441)
 
 5 presets are available now, based on the shortcut of the software I frequently used (Ctrl X/C/V/Z; VSCode shortcuts; Commonly used system shortcuts; EDA software...). You can modify them in code to suit your needs.
 
@@ -45,6 +46,11 @@ See below for specific pin settings:
 #define OLED_SCL        7
 #define BTN_5_PIN       8
 #define STATUS_LED      10
+
+// I2S Microphone (INMP441) Pin definitions
+#define I2S_SCK         9       // Serial Clock (BCLK)
+#define I2S_WS          0       // Word Select (LRCLK)
+#define I2S_SD          18      // Serial Data (DOUT)
 ```
 
 *Keys should be set to pull-up mode. If you don't have external pull-up resistors, please change the pinMode of each key to `INPUT_PULLUP` (in the KEY_Init() function).*

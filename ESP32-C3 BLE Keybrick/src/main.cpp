@@ -12,6 +12,7 @@ extern "C" {
 #include "key.h"
 #include "oled.h"
 #include "battery.h"
+#include "voice.h"
 
 }
 
@@ -100,6 +101,8 @@ void setup() {
     timerAlarmEnable(timer1);
 
     keybrick.begin();
+
+    VOICE_Init();
 }
 
 void loop() {
@@ -151,6 +154,7 @@ void loop() {
     TIMER_Handle();
     METRONOME_Handle();
     BAT_Read();
+    VOICE_Update();
     SYS_StatusLEDCtrl();
     OLED_ChkTimeout();
     OLED_Update();
